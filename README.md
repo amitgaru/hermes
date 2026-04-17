@@ -5,7 +5,7 @@ Hermes is a TCP proxy written in Python (async/await).
 
 # Docker container setup
 
-## compose file example
+## Docker compose setup (recommended)
 
 ```sh
 services:

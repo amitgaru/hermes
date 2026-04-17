@@ -1,0 +1,13 @@
+services:
+  hermes:
+    image: xillar/hermes:latest
+    container_name: hermes
+    restart: unless-stopped
+    ports:
+      - "6389:6389"
+    environment:
+      LISTEN_HOST: "0.0.0.0"
+      LISTEN_PORT: "6389"
+      FORWARD_HOST: "localhost"
+      FORWARD_PORT: "6379"
+      UPSTREAM_ONLY: "true"

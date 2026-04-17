@@ -29,11 +29,11 @@ Docker public image: `xillar/hermes:latest`
   
   ### Core Settings
   
-  - **`LISTEN_HOST`**  
+  - **`LISTEN_HOST`** *(default: `0.0.0.0`)*  
     IP address the proxy binds to for incoming connections.  
     _Example:_ `0.0.0.0`
   
-  - **`LISTEN_PORT`**  
+  - **`LISTEN_PORT`** *(default: `8000`)*  
     Port the proxy listens on.  
     _Example:_ `6379`
   
@@ -41,7 +41,7 @@ Docker public image: `xillar/hermes:latest`
     Target server IP address where traffic is forwarded (e.g., Redis/KeyDB instance).  
     _Example:_ `127.0.0.1`
   
-  - **`FORWARD_PORT`**  
+  - **`FORWARD_PORT`** *(default: `8888`)*  
     Target server port.  
     _Example:_ `6380`
   
@@ -49,7 +49,7 @@ Docker public image: `xillar/hermes:latest`
   
   ### Latency Control
   
-  - **`LATENCY_MSECS`**  
+  - **`LATENCY_MSECS`** *(default: `0`)*  
     Artificial delay (in milliseconds) applied to each packet.  
     _Example:_ `5` (adds ~5ms delay per packet)
   

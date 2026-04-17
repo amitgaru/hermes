@@ -63,3 +63,13 @@ Docker public image: `xillar/hermes:latest`
 # Benchmarks
 
 *In Progress.*
+
+
+# Acknowledgments
+
+This project was developed with assistance from AI tools, including:
+
+- **Claude (Anthropic)** – for code suggestions, design ideas, and implementation guidance  
+- **OpenAI (ChatGPT)** – for code development, debugging help, and README/documentation improvements  
+
+These tools were used to accelerate development and improve code quality and clarity.

@@ -3,9 +3,7 @@
 `Hermes` is a TCP proxy written in Python (async/await) to simulate network delays between the servers. One can configure either the upstream-only proxy delay or both (upstream and downstream) proxy delays.
 
 
-# Docker container setup
-
-## Docker compose setup (recommended)
+# Docker compose setup (recommended)
 
 ```sh
 services:

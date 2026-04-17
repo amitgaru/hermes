@@ -62,4 +62,4 @@ Docker public image: `xillar/hermes:latest`
 
 # Benchmarks
 
-*In Progress*
+*In Progress.*

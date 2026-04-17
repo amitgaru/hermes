@@ -4,8 +4,6 @@ import logging
 import asyncio
 
 from collections import deque
-from concurrent.futures import ThreadPoolExecutor
-
 
 logging.basicConfig(
     level=logging.INFO,
@@ -138,8 +136,6 @@ async def handle_client(client_reader, client_writer):
         tasks.append(forward(server_reader, client_writer))
     await asyncio.gather(*tasks)
 
-
-executor = ThreadPoolExecutor(max_workers=1)
 
 async def main():
     asyncio.create_task(periodic_packet_processor())

@@ -19,6 +19,7 @@ services:
       FORWARD_PORT: "6379"
       UPSTREAM_ONLY: "true"
       LATENCY_MSECS: "${LATENCY_MSECS:-5}"
+      BUFFER_SIZE: "4096"
 ```
 
 Docker public image: `xillar/hermes:latest`
@@ -37,13 +38,18 @@ Docker public image: `xillar/hermes:latest`
     Port the proxy listens on.  
     _Example:_ `6379`
   
-  - **`FORWARD_HOST`**  
+  - **`FORWARD_HOST`** *(default: `127.0.0.1`)*  
     Target server IP address where traffic is forwarded (e.g., Redis/KeyDB instance).  
     _Example:_ `127.0.0.1`
   
   - **`FORWARD_PORT`** *(default: `8888`)*  
     Target server port.  
     _Example:_ `6380`
+
+  - **`BUFFER_SIZE`** *(default: `4096`)*  
+    Size (in bytes) of each read operation from the socket.  
+    Larger values may improve throughput, while smaller values can provide finer-grained latency control.  
+    _Example:_ `4096`
   
   ### Latency Control
   

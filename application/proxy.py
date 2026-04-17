@@ -17,10 +17,10 @@ LISTEN_HOST = os.getenv("LISTEN_HOST", "0.0.0.0")
 LISTEN_PORT = int(os.getenv("LISTEN_PORT", "8000"))
 
 
-FORWARD_HOST = os.getenv("FORWARD_HOST")
+FORWARD_HOST = os.getenv("FORWARD_HOST", "127.0.0.1")
 FORWARD_PORT = int(os.getenv("FORWARD_PORT", "8888"))
 
-BUFFER_SIZE = 4096
+BUFFER_SIZE = int(os.getenv("BUFFER_SIZE", "4096"))
 
 LATENCY_MSECS = float(os.getenv("LATENCY_MSECS", "0.0"))
 UPSTREAM_ONLY = os.getenv("UPSTREAM_ONLY", "true").lower() == "true"

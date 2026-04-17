@@ -45,8 +45,6 @@ Docker public image: `xillar/hermes:latest`
     Target server port.  
     _Example:_ `6380`
   
-  ---
-  
   ### Latency Control
   
   - **`LATENCY_MSECS`** *(default: `0`)*  

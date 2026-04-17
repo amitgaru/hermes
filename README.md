@@ -53,8 +53,8 @@ Docker public image: `xillar/hermes:latest`
   
   - **`UPSTREAM_ONLY`** *(default: `true`)*  
     Controls where latency is applied:
-    - `true` → Delay is applied **only to upstream traffic** (client → server)  
-    - `false` → Delay is applied to **both upstream and downstream** (client ↔ server)
+    - `true`:  Delay is applied **only to upstream traffic** (client → server)  
+    - `false`: Delay is applied to **both upstream and downstream** (client ↔ server)
   
 
 

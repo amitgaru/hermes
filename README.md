@@ -20,6 +20,7 @@ services:
       UPSTREAM_ONLY: "true"
       LATENCY_MSECS: "${LATENCY_MSECS:-5}"
       BUFFER_SIZE: "4096"
+      LOG_LEVEL: "INFO"
 ```
 
 Docker public image: `xillar/hermes:latest`

@@ -16,12 +16,12 @@ def create_app(shared_latency):
     def set_latency():
         latency_msecs = request.get_json(silent=True)["latency_msecs"]
         logger.info("Setting latency to %s ms", latency_msecs)
-        shared_latency.value = latency_msecs
-        return jsonify({"latency_msecs": shared_latency.value})
+        shared_latency.value = float(latency_msecs) / 1000
+        return jsonify({"latency_msecs": latency_msecs})
 
     @app.get("/latency")
     def get_latency():
-        return jsonify({"latency_msecs": shared_latency.value})
+        return jsonify({"latency_msecs": float(shared_latency.value * 1000)})
 
     return app
 

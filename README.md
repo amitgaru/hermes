@@ -49,19 +49,24 @@ Docker public image: `xillar/hermes:latest`
   - **`LISTEN_HOST`** *(default: `127.0.0.1`)*  
     IP address the proxy binds to for incoming connections.  
   
-  - **`LISTEN_PORT`** *(default: `6389`)*  
+  - **`LISTEN_PORT`** *(default: `6380`)*  
     Port the proxy listens on.  
   
   - **`FORWARD_HOST`** *(default: `127.0.0.1`)*  
     Target server IP address where traffic is forwarded (e.g., Redis/KeyDB instance).  
-    _Example:_ `127.0.0.1`
   
   - **`FORWARD_PORT`** *(default: `6379`)*  
     Target server port.  
 
-  - **`BUFFER_SIZE`** *(default: `4096`)*  
+  - **`BUFFER_SIZE`** *(default: `65536`)*  
     Size (in bytes) of each read operation from the socket.  
-    Larger values may improve throughput, while smaller values can provide finer-grained latency control.  
+    Larger values may improve throughput, while smaller values can provide finer-grained latency control.
+
+  - **`API_HOST`** *(default: `127.0.0.1`)*  
+    Latency API host address.  
+  
+  - **`API_PORT`** *(default: `8000`)*  
+    Latency API port.
   
   ### Latency Control
   

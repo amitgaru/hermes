@@ -88,7 +88,9 @@ Response:
 
 # Benchmarks
 
-## Baseline (without any proxy) vs Speedbump (0ms upstream) vs Hermes (0ms upstream)
+## redis-benchmark
+
+### Baseline (without any proxy) vs Speedbump (0ms upstream) vs Hermes (0ms upstream)
 
 ![](results/0ms_upstream.png) 
 

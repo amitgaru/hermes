@@ -81,7 +81,7 @@ curl -X GET http://localhost:8000/latency  # example
 
 Response:
 ```sh
-{"latency_msecs":4.999999888241291}
+{"latency": 5}
 ```
 
 ## Update current Latency in Milliseconds
@@ -98,9 +98,6 @@ Response:
 ```sh
 {"latency":20}
 ```
-
-
-
 
 # Acknowledgments
 

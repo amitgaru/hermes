@@ -5,6 +5,6 @@ authors:
     given-names: Amit
     orcid: https://orcid.org/0009-0005-6983-9706
 title: "hermes"
-version: 1.0.0
-date-released: 2026-04-20
+version: 1.0.3
+date-released: 2026-04-24
 repository-code: https://github.com/amitgaru/hermes

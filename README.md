@@ -6,7 +6,7 @@
 
 ## redis-benchmark
 
-Benchmarking script is available at `benchmarks/redis_test.sh`. The following benchmarking results are based on `1M` requests across `100` concurrent clients.
+Benchmarking script is available at `benchmarks/redis_test.sh`. The following benchmarking results are based on `1M` requests across `100` concurrent clients with buffer size `65536` across different latencies.
 
 ### Baseline (without any proxy) vs Speedbump (0ms upstream latency) vs Hermes (0ms upstream latency)
 

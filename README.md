@@ -6,10 +6,13 @@
 
 ## redis-benchmark
 
+Benchmarking script is available at `benchmarks/redis_test.sh`.
+
 ### Baseline (without any proxy) vs Speedbump (0ms upstream) vs Hermes (0ms upstream)
 
 ![](results/0ms_upstream.png) 
 
+![](results/5ms_upstream.png) 
 
 # Docker compose setup (recommended)
 

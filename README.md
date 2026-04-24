@@ -8,11 +8,14 @@
 
 Benchmarking script is available at `benchmarks/redis_test.sh`.
 
-### Baseline (without any proxy) vs Speedbump (0ms upstream) vs Hermes (0ms upstream)
+### Baseline (without any proxy) vs Speedbump (0ms upstream latency) vs Hermes (0ms upstream latency)
 
-![](results/0ms_upstream.png) 
+  ![](results/0ms_upstream.png) 
 
-![](results/5ms_upstream.png) 
+
+### Baseline (without any proxy) vs Speedbump (5ms upstream latency) vs Hermes (5ms upstream latency)
+
+  ![](results/5ms_upstream.png) 
 
 # Docker compose setup (recommended)
 

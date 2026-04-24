@@ -26,13 +26,14 @@ services:
     container_name: hermes
     ports:
       - "6389:6389"
+      - "8000:8000"
     environment:
       LISTEN_HOST: "0.0.0.0"
       LISTEN_PORT: "6389"
       FORWARD_HOST: "localhost"
       FORWARD_PORT: "6379"
-      LATENCY_MSECS: "${LATENCY_MSECS:-5}"
-      BUFFER_SIZE: "4096"
+      LATENCY_MSECS: "5"
+      BUFFER_SIZE: "65536"
       LOG_LEVEL: "INFO"
       API_HOST: "0.0.0.0"
       API_PORT: "8000"

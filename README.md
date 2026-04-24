@@ -71,7 +71,7 @@ Docker public image: `xillar/hermes:latest`
   #### Latency Control
   
   - **`LATENCY_MSECS`** *(default: `0`)*  
-    Artificial delay (in milliseconds) applied to each packet.  
+    Artificial delay (in milliseconds) applied per buffer flush.  
   
 
 ## Latency API documentation

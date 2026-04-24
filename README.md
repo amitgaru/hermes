@@ -1,6 +1,6 @@
 # Intro
 
-**Hermes** is a TCP proxy written in Erlang that simulates network conditions between servers. It introduces configurable latency by delaying data forwarding on each send operation, where each operation transmits up to one buffer's worth of data. Similar to speedbump (written in Go), Hermes supports runtime delay injection via an HTTP API.
+**Hermes** is a TCP proxy written in Erlang that simulates network conditions between servers. It introduces configurable latency by delaying data forwarding on each send operation, where each operation transmits up to one buffer's worth of data. Similar to **kffl/Speedbump** (written in Go), Hermes supports runtime delay injection via an HTTP API.
 
 # Benchmarks
 

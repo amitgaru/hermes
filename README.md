@@ -88,11 +88,9 @@ Response:
 
 # Benchmarks
 
-*In Progress...*
+## Baseline (without any proxy) vs Speedbump (0ms upstream) vs Hermes (0ms upstream)
 
-## Single thread
-
-## Multi-thread
+![](results/0ms_upstream.png) 
 
 # Acknowledgments
 

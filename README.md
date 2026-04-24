@@ -1,0 +1,104 @@
+# Intro
+
+`Hermes` is a TCP proxy written in Erlang that simulates network delays between servers. Network delay is applied per TCP packet. It is a tool similar to [speedbump](https://github.com/kffl/speedbump) (written in Go). One can inject a different proxy delay during runtime through an HTTP API.
+
+
+# Docker compose setup (recommended)
+
+```sh
+services:
+  hermes:
+    image: xillar/hermes:latest
+    container_name: hermes
+    ports:
+      - "6389:6389"
+    environment:
+      LISTEN_HOST: "0.0.0.0"
+      LISTEN_PORT: "6389"
+      FORWARD_HOST: "localhost"
+      FORWARD_PORT: "6379"
+      LATENCY_MSECS: "${LATENCY_MSECS:-5}"
+      BUFFER_SIZE: "4096"
+      LOG_LEVEL: "INFO"
+      API_HOST: "0.0.0.0"
+      API_PORT: "8000"
+```
+
+Docker public image: `xillar/hermes:latest`
+
+  ## Configuration (Environment Variables)
+  
+  The proxy is configured using environment variables. Below are the available options:
+  
+  ### Core Settings
+  
+  - **`LISTEN_HOST`** *(default: `127.0.0.1`)*  
+    IP address the proxy binds to for incoming connections.  
+  
+  - **`LISTEN_PORT`** *(default: `6389`)*  
+    Port the proxy listens on.  
+  
+  - **`FORWARD_HOST`** *(default: `127.0.0.1`)*  
+    Target server IP address where traffic is forwarded (e.g., Redis/KeyDB instance).  
+    _Example:_ `127.0.0.1`
+  
+  - **`FORWARD_PORT`** *(default: `6379`)*  
+    Target server port.  
+
+  - **`BUFFER_SIZE`** *(default: `4096`)*  
+    Size (in bytes) of each read operation from the socket.  
+    Larger values may improve throughput, while smaller values can provide finer-grained latency control.  
+  
+  ### Latency Control
+  
+  - **`LATENCY_MSECS`** *(default: `0`)*  
+    Artificial delay (in milliseconds) applied to each packet.  
+  
+
+# API documentation
+
+## Read current Latency in Milliseconds
+
+Request:
+```sh
+curl -X GET http://<API_HOST>:<API_PORT>/latency
+curl -X GET http://localhost:8000/latency  # example
+```
+
+Response:
+```sh
+{"latency_msecs":4.999999888241291}
+```
+
+## Update current Latency in Milliseconds
+
+Request to update proxy latency to `20ms`:
+
+```sh
+curl -X POST http://localhost:8000/latency  \
+     -H 'Content-Type: application/json' \
+     -d '{"latency": 20}'
+```
+
+Response:
+```sh
+{"latency":20}
+```
+
+
+# Benchmarks
+
+*In Progress...*
+
+## Single thread
+
+## Multi-thread
+
+# Acknowledgments
+
+This project was developed with assistance from AI tools, including:
+
+- **Claude (Anthropic)** – for code suggestions, design ideas, and implementation guidance  
+- **OpenAI (ChatGPT)** – for code development, debugging help, and README/documentation improvements  
+
+These tools were used to accelerate development and improve code quality and clarity.

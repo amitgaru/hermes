@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this tool, please cite it as below."
+authors:
+  - family-names: Garu
+    given-names: Amit
+    orcid: https://orcid.org/0009-0005-6983-9706
+title: "hermes"
+version: 1.0.0
+date-released: 2026-04-20
+repository-code: https://github.com/amitgaru/hermes

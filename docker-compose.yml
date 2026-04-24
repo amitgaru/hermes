@@ -1,0 +1,6 @@
+services:
+  hermes:
+    image: xillar/hermes:latest
+    build:
+      context: .
+      dockerfile: Dockerfile

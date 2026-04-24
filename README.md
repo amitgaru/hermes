@@ -1,6 +1,14 @@
 # Intro
 
-`Hermes` is a TCP proxy written in Erlang that simulates network delays between servers. Network delay is applied per TCP packet. It is a tool similar to [speedbump](https://github.com/kffl/speedbump) (written in Go). One can inject a different proxy delay during runtime through an HTTP API.
+**Hermes** is a TCP proxy written in Erlang that simulates network conditions between servers. It introduces configurable latency by delaying data forwarding on each send operation, where each operation transmits up to one buffer's worth of data. Similar to speedbump (written in Go), Hermes supports runtime delay injection via an HTTP API.
+
+# Benchmarks
+
+## redis-benchmark
+
+### Baseline (without any proxy) vs Speedbump (0ms upstream) vs Hermes (0ms upstream)
+
+![](results/0ms_upstream.png) 
 
 
 # Docker compose setup (recommended)
@@ -86,13 +94,7 @@ Response:
 ```
 
 
-# Benchmarks
 
-## redis-benchmark
-
-### Baseline (without any proxy) vs Speedbump (0ms upstream) vs Hermes (0ms upstream)
-
-![](results/0ms_upstream.png) 
 
 # Acknowledgments
 

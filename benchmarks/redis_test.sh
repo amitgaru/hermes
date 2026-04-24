@@ -16,8 +16,10 @@ REDIS_CONTAINER="bench-redis"
 SPEEDBUMP_CONTAINER="bench-speedbump"
 HERMES_CONTAINER="bench-hermes"
 
-REDIS_BENCH_ARGS="-n 1000 -c 50 --csv"
+REDIS_BENCH_ARGS="-n 1000000 -c 100 --csv"
 TESTS="SET GET INCR LPUSH LPOP SADD SPOP MSET"
+
+LATENCY_MSECS=5
 
 # ─────────────────────────────────────────────
 # Helpers
@@ -89,6 +91,8 @@ run_benchmark() {
 log "Running baseline benchmark directly against Redis..."
 run_benchmark "Redis (baseline)" "127.0.0.1" "$REDIS_PORT"
 
+sleep 5
+
 # ─────────────────────────────────────────────
 # Benchmark 2 — Speedbump
 # ─────────────────────────────────────────────
@@ -97,17 +101,20 @@ docker run -d --rm \
     --name "$SPEEDBUMP_CONTAINER" \
     --network "$NETWORK" \
     "$SPEEDBUMP_IMAGE" \
-        --latency 5ms \
+        --latency ${LATENCY_MSECS}ms \
         --host 0.0.0.0 \
         --port $SPEEDBUMP_PORT \
         "$REDIS_CONTAINER":$REDIS_PORT
-sleep 2
+
+
 ok "Speedbump up on port $SPEEDBUMP_PORT"
 
 log "Running benchmark through Speedbump..."
 run_benchmark "Speedbump" "$SPEEDBUMP_CONTAINER" "$SPEEDBUMP_PORT"
 
 docker rm -f bench-speedbump 2>/dev/null || true
+
+sleep 5
 
 # ─────────────────────────────────────────────
 # Benchmark 3 — Hermes
@@ -116,7 +123,7 @@ log "Starting Hermes proxy..."
 docker run -d --rm \
     --network "$NETWORK" \
     --name "$HERMES_CONTAINER" \
-    -e LATENCY_MSECS=5 \
+    -e LATENCY_MSECS=${LATENCY_MSECS} \
     -e LISTEN_HOST=0.0.0.0 \
     -e LISTEN_PORT=${HERMES_PORT} \
     -e FORWARD_HOST="$REDIS_CONTAINER" \

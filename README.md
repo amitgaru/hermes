@@ -40,11 +40,11 @@ services:
 
 Docker public image: `xillar/hermes:latest`
 
-  ## Configuration (Environment Variables)
+  ### Configuration (Environment Variables)
   
   The proxy is configured using environment variables. Below are the available options:
   
-  ### Core Settings
+  #### Core Settings
   
   - **`LISTEN_HOST`** *(default: `127.0.0.1`)*  
     IP address the proxy binds to for incoming connections.  
@@ -68,38 +68,38 @@ Docker public image: `xillar/hermes:latest`
   - **`API_PORT`** *(default: `8000`)*  
     Latency API port.
   
-  ### Latency Control
+  #### Latency Control
   
   - **`LATENCY_MSECS`** *(default: `0`)*  
     Artificial delay (in milliseconds) applied to each packet.  
   
 
-# API documentation
+## Latency API documentation
 
-## Read current Latency in Milliseconds
-
-Request:
-```sh
-curl -X GET http://<API_HOST>:<API_PORT>/latency
-curl -X GET http://localhost:8000/latency  # example
-```
-
-Response:
-```sh
-{"latency": 5}
-```
-
-## Update current Latency in Milliseconds
-
-Request to update proxy latency to `20ms`:
-
-```sh
-curl -X POST http://localhost:8000/latency  \
-     -H 'Content-Type: application/json' \
-     -d '{"latency": 20}'
-```
-
-Response:
-```sh
-{"latency":20}
-```
+  ### Read current Latency in Milliseconds
+  
+  Request:
+  ```sh
+  curl -X GET http://<API_HOST>:<API_PORT>/latency
+  curl -X GET http://localhost:8000/latency  # example
+  ```
+  
+  Response:
+  ```sh
+  {"latency": 5}
+  ```
+  
+  ### Update current Latency in Milliseconds
+  
+  Request to update proxy latency to `20ms`:
+  
+  ```sh
+  curl -X POST http://localhost:8000/latency  \
+       -H 'Content-Type: application/json' \
+       -d '{"latency": 20}'
+  ```
+  
+  Response:
+  ```sh
+  {"latency":20}
+  ```

@@ -45,62 +45,32 @@ Docker public image: `xillar/hermes:latest`
   
   The proxy is configured using environment variables. Below are the available options:
   
-  #### Core Settings
-  
-  - **`LISTEN_HOST`** *(default: `127.0.0.1`)*  
-    IP address the proxy binds to for incoming connections.  
-  
-  - **`LISTEN_PORT`** *(default: `6380`)*  
-    Port the proxy listens on.  
-  
-  - **`FORWARD_HOST`** *(default: `127.0.0.1`)*  
-    Target server IP address where traffic is forwarded (e.g., Redis/KeyDB instance).  
-  
-  - **`FORWARD_PORT`** *(default: `6379`)*  
-    Target server port.  
+  | Variable | Default | Description |
+  |---|---|---|
+  | `LISTEN_HOST` | `127.0.0.1` | Proxy bind address |
+  | `LISTEN_PORT` | `6380` | Proxy listen port |
+  | `FORWARD_HOST` | `127.0.0.1` | Target server address |
+  | `FORWARD_PORT` | `6379` | Target server port |
+  | `BUFFER_SIZE` | `65536` | Read buffer size (bytes) |
+  | `API_HOST` | `127.0.0.1` | Latency API host |
+  | `API_PORT` | `8000` | Latency API port |
+  | `LATENCY_MSECS` | `0` | Artificial delay (ms) per flush |
 
-  - **`BUFFER_SIZE`** *(default: `65536`)*  
-    Size (in bytes) of each read operation from the socket.  
-    Larger values may improve throughput, while smaller values can provide finer-grained latency control.
+  
+### Latency API
 
-  - **`API_HOST`** *(default: `127.0.0.1`)*  
-    Latency API host address.  
-  
-  - **`API_PORT`** *(default: `8000`)*  
-    Latency API port.
-  
-  #### Latency Control
-  
-  - **`LATENCY_MSECS`** *(default: `0`)*  
-    Artificial delay (in milliseconds) applied per buffer flush.  
-  
+**GET** `/latency` — read current latency
 
-## Latency API documentation
+```sh
+curl http://localhost:8000/latency
+# {"latency": 5}
+```
 
-  ### Read current Latency in Milliseconds
-  
-  Request:
-  ```sh
-  curl -X GET http://<API_HOST>:<API_PORT>/latency
-  curl -X GET http://localhost:8000/latency  # example
-  ```
-  
-  Response:
-  ```sh
-  {"latency": 5}
-  ```
-  
-  ### Update current Latency in Milliseconds
-  
-  Request to update proxy latency to `20ms`:
-  
-  ```sh
-  curl -X POST http://localhost:8000/latency  \
-       -H 'Content-Type: application/json' \
-       -d '{"latency": 20}'
-  ```
-  
-  Response:
-  ```sh
-  {"latency":20}
-  ```
+**POST** `/latency` — update latency
+
+```sh
+curl -X POST http://localhost:8000/latency \
+     -H 'Content-Type: application/json' \
+     -d '{"latency": 20}'
+# {"latency": 20}
+```
